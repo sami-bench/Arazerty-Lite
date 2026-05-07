@@ -1,0 +1,290 @@
+<html lang="ar"><head>
+        <meta charset="UTF-8">
+        <title>Arazerty : Azerty B Darija! [LITE]</title>
+        <style>
+            :root {
+                --bg-color: #780047;
+                --text-color: #e0e0e0;
+                --primary-color: #8e0771;
+                --secondary-color: #de61e6;
+                --accent-color: #ffffff;
+                --border-radius: 10px;
+            }
+
+            body {
+                width: 400px;
+                margin: 0 auto;
+                padding: 10px;
+                background: var(--bg-color);
+                color: var(--text-color);
+                font-family: "Segoe UI", system-ui;
+                direction: rtl;
+            }
+
+            .help-canvas {
+                position: fixed;
+                top: -300px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 400px;
+                background: #1f4638;
+                border: 3px solid #c98013;
+                border-top: none;
+                color: var(--text-color);
+                padding: 0px 20px 20px 20px;
+                border-radius: 0px 0px 12px 12px;
+                box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+                transition: top 0.3s ease-in-out;
+                z-index: 1000;
+            }
+
+            .row-keys {
+                display: inline-flex;
+                padding: 8px;
+                font-weight: 700;
+                border-right: 1px solid #ffffff;
+            }
+
+            .help-canvas.visible {
+                top: 0; /* Afficher le canevas */
+            }
+
+            .header {
+                text-align: center;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+
+            /* Style pour le conteneur de la bannière */
+            .banner {
+                width: 320px;
+                margin: auto;
+                height: 100px; /* Ajustez la hauteur selon vos besoins */
+                overflow: hidden;
+                position: relative;
+                margin-bottom: 10px;
+            }
+
+            /* Style pour les images */
+            .banner img {
+                width: 320px;
+                height: auto;
+                object-fit: cover; /* Pour que l'image couvre tout l'espace */
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0; /* Par défaut, l'image est invisible */
+                transition: opacity 1s ease-in-out; /* Animation de fondu */
+            }
+
+            /* Classe pour afficher l'image actuelle */
+            .banner img.active {
+                opacity: 1; /* Affiche l'image */
+            }
+
+            /* Classe pour cacher l'image précédente */
+            .banner img.hide {
+                opacity: 0; /* Cache l'image */
+            }
+
+            .converter-box {
+                background: rgba(0, 0, 0, 0.4);
+                padding: 15px;
+                border-radius: var(--border-radius);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .counters {
+                margin: 10px 0;
+                font-size: 0.9em;
+                color: #eaeaea;
+            }
+
+            form {
+                display: flex;
+            }
+
+            textarea {
+                font-weight: 700;
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0;
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid var(--primary-color);
+                border-radius: var(--border-radius);
+                color: var(--text-color);
+                font-size: 16px;
+                resize: vertical;
+                transition: all 0.3s ease;
+            }
+
+            textarea:focus {
+                outline: none;
+                border-color: var(--accent-color);
+                box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+            }
+
+            .btn-group {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+                gap: 8px;
+                margin: 15px 0;
+            }
+
+            .btn {
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.7);
+                border: 1px solid var(--primary-color);
+                border-radius: 6px;
+                color: var(--text-color);
+                cursor: pointer;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .bismi {
+                font-size: 7px;
+            }
+
+            .btn:hover {
+                background: var(--primary-color);
+                transform: scale(0.98);
+            }
+
+            .pro-btn {
+                background: linear-gradient(45deg, #22e662, #038a33);
+                border: none;
+                font-weight: 700;
+                color: #000;
+            }
+
+            .pro-btn:hover {
+                background: linear-gradient(45deg, #22e662, #038a33);
+            }
+
+            .footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 0.9em;
+                color: #eaeaea;
+            }
+
+            a {
+                color: #fff;
+                font-weight: 700;
+                transition: color 0.3s ease;
+            }
+
+            .footer a {
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            a:hover {
+                color: #2980b9;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="converter-box">
+            <form name="conversion">
+                <textarea spellcheck="false" name="SamiBenchehidaAkaSampix" id="bar" rows="3" placeholder="ktb b had chkl ghayban bl3arbiya"></textarea>
+            </form>
+
+            <div class="btn-group">
+                <button class="btn" id="copyButton">Copy All [CTRL+C] 🖊️</button>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn" id="HelpKeys">Help ❔</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            Arazerty : Azerty B Darija! [LITE] Created by
+            <strong><a href="https://dii.ma/sami" target="_blank">SAMI BENCHEHIDA AKA SAMPIX</a></strong>
+        </div>
+        <div id="helpCanvas" class="help-canvas">
+            <h3 style="text-align: center">Shortcut keyboard ⌨</h3>
+            <div class="row-keys">
+                w/o → و <br>
+                o' → ؤ <br>
+
+                A' → ئ <br>
+                A → ى <br>
+            </div>
+            <div class="row-keys">
+                f → ف <br>
+                ç/( → ق <br>
+                k → ك <br>
+                l → ل <br>
+                m → م <br>
+                n → ن <br>
+                h → ه <br>
+                aa → آ <br>
+            </div>
+            <div class="row-keys">
+                j → ج <br>
+                è/&amp; → ح <br>
+                kh → خ <br>
+                T → ط <br>
+                T' → ظ <br>
+                "/# → ع <br>
+                gh → غ <br>
+                a' → أ <br>
+            </div>
+
+            <div class="row-keys">
+                s → س<br>
+                ch → ش <br>
+                S → ص <br>
+                d → د <br>
+                'd → ذ <br>
+                b → ب <br>
+                t' → ث <br>
+                à → ة <br>
+            </div>
+
+            <div class="row-keys">
+                a → ا <br>
+                z → ز <br>
+                e → إ <br>
+                r → ر<br>
+                t → ت<br>
+                y/i → ي<br>
+                D → ض <br>
+                é → ء <br>
+            </div>
+        </div>
+
+        <script>
+            function copyText() {
+                var textarea = document.getElementById("bar");
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+
+                // Exécuter la commande "copy" pour copier le texte sélectionné
+                try {
+                    var successful = document.execCommand("copy");
+                } catch (err) {
+                    alert("Une erreur s'est produite lors de la tentative de copie.");
+                }
+            }
+
+            const copyButton = document.getElementById("copyButton");
+            if (copyButton) {
+                copyButton.addEventListener("click", function () {
+                    // Appelez la fonction de copie à l'intérieur d'une fonction asynchrone
+                    copyText();
+                });
+            }
+        </script>
+        <script src="https://www.dl.dropboxusercontent.com/scl/fi/rse4zgjo0v4i9m6bisp1w/litehfdskhfhjdsjkfsd.js?rlkey=087mg1q45c2qwkklzsay6qpd5&amp;st=vckfkbwd&amp;dl=0"></script>
+        <script src="https://www.dl.dropboxusercontent.com/scl/fi/musfpe33u93a7o3yz9cy2/script2.js?rlkey=a1tl4usgjl3rues9vcgqszbbl&amp;st=gjnw8acw&amp;dl=0"></script>
+    
+</body></html>
